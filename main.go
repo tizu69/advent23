@@ -12,6 +12,7 @@ import (
 var CLI struct {
 	Day       int  `arg:""`
 	NoVerbose bool `help:"DISABLE verbose logging"`
+	PartTwo   bool `short:"2" help:"Use P2 logic"`
 }
 var invalid = false
 
@@ -22,6 +23,9 @@ func main() {
 
 	if !CLI.NoVerbose {
 		log.SetLevel(log.DebugLevel)
+	}
+	if CLI.PartTwo {
+		log.Info("NOTE: P2 mode")
 	}
 
 	log.Info("Looking for challenge day", "day", CLI.Day)

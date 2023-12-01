@@ -11,6 +11,12 @@ func (d *days) D1Main() {
 	input := GetInput()
 	input = append(input, '\n')
 
+	//#region Task 2
+	if CLI.PartTwo {
+		log.Fatal("This day does not support part 2")
+	}
+	//#endregion
+
 	results, thisLine := []int{}, []byte{}
 	for i, v := range input {
 		log.Debug("New run", "i", i, "v", string(v))
