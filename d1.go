@@ -24,6 +24,7 @@ func (d *days) D1Main() {
 		if v == '\n' {
 			toAdd, err := strconv.Atoi(string(thisLine[0]) + string(thisLine[len(thisLine)-1]))
 			if err != nil {
+				invalid = true
 				log.Error("Couldn't convert to int", "err", err)
 			}
 
