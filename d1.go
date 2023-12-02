@@ -2,6 +2,7 @@ package main
 
 import (
 	"strconv"
+	"strings"
 
 	"github.com/charmbracelet/log"
 )
@@ -9,11 +10,31 @@ import (
 func (d *days) D1Main() {
 	// Fetch data
 	input := GetInput()
-	input = append(input, '\n')
+	// input = append(input, '\n')
 
 	//#region Task 2
 	if CLI.PartTwo {
-		log.Fatal("This day does not support part 2")
+		wordedNumbers := map[string]byte{
+			"zero":  '0',
+			"one":   '1',
+			"two":   '2',
+			"three": '3',
+			"four":  '4',
+			"five":  '5',
+			"six":   '6',
+			"seven": '7',
+			"eight": '8',
+			"nine":  '9',
+		}
+		for i := 0; i < len(input); i++ {
+			for k, v := range wordedNumbers {
+				if strings.HasPrefix(string(input[i:]), k) {
+					input[i] = v
+					break
+				}
+			}
+		}
+		log.Debug("Converted for p2", "input", string(input))
 	}
 	//#endregion
 
