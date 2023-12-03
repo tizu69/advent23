@@ -14,3 +14,5 @@ The `go` command is required to build and run the code. Run `go run .` while in 
 - `go run . 2`: Run the code for day 2, part 1
 - `go run . 6 -2`: Run the code for day 6, part 2
 - `go run . 2 --no-verbose`: Run the code for day 2 without verbose logging
+- `go run . 6 -f example`: Read from example.txt instead
+- `go run . 2 -e 3`: Shows your expected output below the answer

@@ -91,9 +91,6 @@ func d3getNum(x int, y int, input [][]byte, nested bool) (int, bool, int) {
 
 			if gears == 2 {
 				return -1, true, gearRatio
-			} else if gears == 0 {
-				return -1, false, -1
-
 			}
 		} */
 		//#endregion
@@ -125,12 +122,13 @@ func d3getNum(x int, y int, input [][]byte, nested bool) (int, bool, int) {
 					"tY", tY, "tX", tX, "key", key, "len(input)", len(input), "len(input[0])", len(input[0]))
 				continue
 			}
+
 			thatOne := input[tY][tX]
 			log.Debug("Considering special char", "string(thatOne)", string(thatOne), "key", key, "tY", tY, "tX", tX)
+
 			if !InSlice[byte](thatOne, []byte{'.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}) {
 				validPart = true
 				log.Debug("... found!")
-
 			}
 		}
 	}
@@ -143,5 +141,5 @@ func d3getNum(x int, y int, input [][]byte, nested bool) (int, bool, int) {
 	}
 
 	log.Debug("Returning num", "num", convertedNum, "validPart", validPart)
-	return convertedNum, validPart, -1
+	return convertedNum, validPart, convertedNum
 }
