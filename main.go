@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"reflect"
 
 	"github.com/alecthomas/kong"
@@ -10,9 +9,11 @@ import (
 )
 
 var CLI struct {
-	Day       int  `arg:""`
-	NoVerbose bool `help:"DISABLE verbose logging"`
-	PartTwo   bool `short:"2" help:"Use P2 logic"`
+	Day          int    `arg:""`
+	NoVerbose    bool   `help:"DISABLE verbose logging"`
+	PartTwo      bool   `short:"2" help:"Use P2 logic"`
+	FileName     string `help:"Name of input file" short:"f" default:"input"`
+	ExpectedData string `help:"Expected output" short:"e"`
 }
 var invalid = false
 
@@ -23,9 +24,6 @@ func main() {
 
 	if !CLI.NoVerbose {
 		log.SetLevel(log.DebugLevel)
-	}
-	if CLI.PartTwo {
-		log.Info("NOTE: P2 mode")
 	}
 
 	log.Info("Looking for challenge day", "day", CLI.Day)
@@ -40,17 +38,11 @@ func main() {
 	if invalid {
 		log.Fatal("Error was encountered, output may be invalid!")
 	}
-}
 
-func GetInput() []byte {
-	log.Info("Create a file (if neccessary) called 'input.txt', edit it to your liking, then press enter to continue")
-	fmt.Scanln()
-
-	// Read data from file
-	input, err := os.ReadFile("input.txt")
-	if err != nil {
-		log.Fatal("An error occurred while reading ", "err", err)
+	if CLI.ExpectedData != "" {
+		log.Info("Expected output", "expected", CLI.ExpectedData)
 	}
-
-	return input
+	if CLI.PartTwo {
+		log.Info("Note: Part 2 results may differ from part 1!")
+	}
 }

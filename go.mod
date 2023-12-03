@@ -3,10 +3,13 @@ module github.com/tizu69/advent23
 go 1.21.4
 
 require (
-	github.com/alecthomas/kong v0.8.1 // indirect
+	github.com/alecthomas/kong v0.8.1
+	github.com/charmbracelet/log v0.3.1
+)
+
+require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/charmbracelet/lipgloss v0.9.1 // indirect
-	github.com/charmbracelet/log v0.3.1 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect
