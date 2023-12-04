@@ -33,7 +33,14 @@ func main() {
 		log.Fatal("Couldn't find challenge for that day")
 	}
 
-	function.Call(nil)
+	result := function.Call(nil)
+	switch len(result) {
+	case 1:
+		log.Info("Got result", "result", result[0].Int())
+	case 2:
+		log.Info("SUMMARY: What happened?", "actions", result[1].String())
+		log.Info("Got result", "result", result[0].Int())
+	}
 
 	if invalid {
 		log.Fatal("Error was encountered, output may be invalid!")

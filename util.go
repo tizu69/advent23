@@ -42,3 +42,17 @@ func MultiplyDigits(input string) int {
 	}
 	return result
 }
+
+func InsertAt[T any](slice []T, index int, value T) []T {
+	if len(slice) == index { // nil or empty slice or after the last element
+		return append(slice, value)
+	}
+	slice = append(slice[:index+1], slice[index:]...) // index < len(a)
+	slice[index] = value
+	return slice
+}
+
+func Wait() {
+	fmt.Println("Press enter to continue...")
+	fmt.Scanln()
+}
